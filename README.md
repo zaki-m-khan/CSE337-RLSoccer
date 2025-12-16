@@ -9,9 +9,12 @@ Reinforcement learning project training agents to kick a soccer ball into a goal
 
 ## How to Run
 
-1. Open `notebooks/20_final_model.ipynb` in Google Colab
-2. Run all cells (`Runtime` → `Run all`)
-3. Results are saved to `notebooks/` folder
+Open the notebooks in [Google Colab](https://colab.research.google.com) and run all cells.
+
+| Notebook | Description | Runtime |
+|----------|-------------|---------|
+| `00_mujoco_setup.ipynb` | Environment setup and visualization | ~1 min |
+| `20_final_model.ipynb` | SARSA and DDPG experiments | ~10-15 min |
 
 ## Requirements
 
@@ -23,22 +26,24 @@ pip install mujoco==3.1.6 gymnasium numpy matplotlib pandas torch
 
 ```
 ├── notebooks/
-│   └── 20_final_model.ipynb   # Main experiment notebook
+│   ├── 00_mujoco_setup.ipynb    # Environment test + visualization
+│   └── 20_final_model.ipynb     # Main experiments (SARSA & DDPG)
 ├── assets/
-│   └── soccer_min.xml         # MuJoCo environment model
+│   └── soccer_min.xml           # MuJoCo environment model
 ├── src/
-│   ├── soccer_env.py          # Environment implementation
-│   ├── tilecoding.py          # Tile coding for SARSA
-│   └── sarsa_agent.py         # SARSA agent
+│   ├── soccer_env.py            # Environment implementation
+│   ├── tilecoding.py            # Tile coding for SARSA
+│   └── sarsa_agent.py           # SARSA agent
 └── requirements.txt
 ```
 
 ## Experiment Settings
 
-- **Actions**: 28 discrete kicks (7 yaw angles × 4 speeds)
-- **Seeds**: 0, 42, 123 (for reproducibility)
-- **Episodes**: 500 per seed
-- **Noise**: ±3° yaw, ±10% speed
-- **Goal**: 2.4m wide × 1.8m tall
-- **Reward**: +5 goal, -5 miss/blocked
-
+| Parameter | Value |
+|-----------|-------|
+| Actions | 28 discrete kicks (7 yaw × 4 speed) |
+| Seeds | 0, 42, 123 |
+| Episodes | 500 per seed |
+| Noise | ±3° yaw, ±10% speed |
+| Goal | 2.4m wide × 1.8m tall |
+| Reward | +5 goal, -5 miss/blocked |
